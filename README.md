@@ -1,12 +1,22 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# TODO List
+## Description
+Todo list app for CTD React course
+## Dependencies (make sure these are installed)
+ - Node
+ - Vite
+## Installation
+Clone the Repository using 
+```
+git clone https://github.com/catmajor/CTD-React.git
+```
+Then navigate into the cloned repository
+## Running
+```
+npm run dev
+```
+Starts the server. Once run you will be able to see which port the app is running on
+Default is 5173
+By default, host is the local machine so
+http://localhost:5173/
+is the appropriate address in the browser
+(this will also be displayed by the Local tag when running the dev script)
