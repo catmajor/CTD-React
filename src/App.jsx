@@ -1,6 +1,6 @@
 import './App.css'
-import './TodoList'
-import './TodoForm'
+import TodoList from './TodoList'
+import TodoForm from './TodoForm'
 function App() {
   return(
     <>
