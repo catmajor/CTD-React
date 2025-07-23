@@ -1,5 +1,5 @@
 import './App.css'
-
+import './TodoList'
 function App() {
   const todos = [
     {id: 1, title: "review resources"},
