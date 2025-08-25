@@ -8,9 +8,16 @@ function App() {
   function addTodo(title) {
     const newTodo = {
       id: Date.now(),
-      title: title
+      title: title,
+      isCompleted: false
     }
     setTodoList([...todoList, newTodo])
+  }
+  function completeTodo(id) {
+    const updatedTodo = todoList.map(ele => {
+      if (ele.id === id) return {...ele, isCompleted: true}
+      return ele
+    });
   }
   return(
     <>
