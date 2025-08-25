@@ -18,6 +18,7 @@ function App() {
       if (ele.id === id) return {...ele, isCompleted: true}
       return ele
     });
+    setTodoList(updatedTodo);
   }
   return(
     <>
