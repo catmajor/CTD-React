@@ -18,4 +18,4 @@ function TextInputWithLabel({
     </>
   );
 }
-export default TxtInputWithLabel
+export default TextInputWithLabel
