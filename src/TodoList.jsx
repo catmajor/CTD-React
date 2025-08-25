@@ -1,5 +1,5 @@
 import TodoListItem from "./TodoListItem";
-function TodoList({todoList}){
+function TodoList({todoList, onCompleteTodo}){
     return (
         <div>
             {todoList.length == 0 ? 
@@ -7,7 +7,7 @@ function TodoList({todoList}){
             :
                 <ul>
                 {todoList.map(todo => 
-                <TodoListItem key={todo.id} title={todo.title} />
+                <TodoListItem key={todo.id} todo={todo} onCompleteTodo = {onCompleteTodo} />
                 )}
             </ul>
             }
