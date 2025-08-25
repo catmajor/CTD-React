@@ -20,14 +20,14 @@ function TodoListItem({todo, onCompleteTodo, onUpdateTodo}) {
     <li>
       {isEditing ? 
         <>
-          <TextInputWithLabel value = {workingTitle} onChange={(e) => handleEdit(e)}/>
-          <button type = "button" onClick = {() => handleCancel()}>Cancel</button>
-          <button type = "button" onClick = {(e) => handleUpdate(e)}>Update</button>
+          <TextInputWithLabel value={workingTitle} onChange={(e) => handleEdit(e)}/>
+          <button type="button" onClick={() => handleCancel()}>Cancel</button>
+          <button type="button" onClick={(e) => handleUpdate(e)}>Update</button>
         </>
       :
-        <form onSubmit = {(e) => handleUpdate(e)}>
-          <input type = "checkbox" checked = {todo.isComplete} onChange = {() => onCompleteTodo(todo.id)}></input>
-          <span onClick = {() => setIsEditing(true)}>{todo.title}</span>
+        <form onSubmit={(e) => handleUpdate(e)}>
+          <input type="checkbox" checked={todo.isComplete} onChange={() => onCompleteTodo(todo.id)}></input>
+          <span onClick={() => setIsEditing(true)}>{todo.title}</span>
         </form>
       }
     </li>

@@ -30,8 +30,8 @@ function App() {
   return(
     <>
       <h1>Todo List</h1>
-      <TodoForm onAddTodo = {addTodo}/>
-      <TodoList todoList = {todoList} onCompleteTodo = {completeTodo} onUpdateTodo = {updateTodo}/>
+      <TodoForm onAddTodo={addTodo}/>
+      <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo}/>
     </>
   );
 }
