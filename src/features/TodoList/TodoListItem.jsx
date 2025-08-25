@@ -7,11 +7,14 @@ function TodoListItem({todo, onCompleteTodo}) {
     setWorkingTitle(todo.title)
     setIsEditing(false)
   }
+  function handleEdit (event) {
+    setWorkingTitle(event.target.value)
+  }
   return (
     <li>
       {isEditing ? 
         <>
-          <TextInputWithLabel value = {todo.title}/>
+          <TextInputWithLabel value = {workingTitle} onChange={(e) => handleEdit(e)}/>
           <button type = "button" onClick = {() => handleCancel()}>Cancel</button>
         </>
       :
