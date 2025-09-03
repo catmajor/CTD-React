@@ -18,6 +18,17 @@ function App() {
           Authorization: token,
         },
       }
+      try {
+        const resp = await fetch(url, options);
+        if (!resp.ok) {
+          throw new Error(resp.statusText);
+        }
+      } catch (error) {
+        setErrorMessage(error.message);
+        console.error('error:', error.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchTodos();
   }, [])
