@@ -9,6 +9,7 @@ function App() {
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const [isSaving, setIsSaving] = useState(false)
   useEffect(() => {
     const fetchTodos = async () => {
       setIsLoading(true)
@@ -69,7 +70,7 @@ function App() {
   return(
     <>
       <h1>Todo List</h1>
-      <TodoForm onAddTodo={addTodo}/>
+      <TodoForm onAddTodo={addTodo} isSaving={isSaving}/>
       <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo} isLoading={isLoading}/>
       { errorMessage ? 
         <>
