@@ -4,7 +4,7 @@ import './App.css'
 import TodoList from './features/TodoList/TodoList'
 import TodoForm from './features/TodoForm'
 function App() {
-  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/s${import.meta.env.VITE_TABLE_NAME}`
   const token = `Bearer ${import.meta.env.VITE_PAT}`
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -20,10 +20,10 @@ function App() {
       }
       try {
         const resp = await fetch(url, options);
-        if (!resp.ok) {
-          throw new Error(resp.statusText);
-        }
         const data = await resp.json();
+        if (!resp.ok) {
+          throw new Error(data.error.message);
+        }
         const fetchedExamples = data.records.map((record) => {
           const todo = {
             id: record.id,
@@ -71,6 +71,13 @@ function App() {
       <h1>Todo List</h1>
       <TodoForm onAddTodo={addTodo}/>
       <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo} isLoading={isLoading}/>
+      { errorMessage ? 
+        <>
+        <hr/>
+        <p>{errorMessage}</p>
+        <button onClick={() => {setErrorMessage("")}}>Clear</button>
+        </>
+      : <></>}
     </>
   );
 }
