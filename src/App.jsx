@@ -4,7 +4,7 @@ import './App.css'
 import TodoList from './features/TodoList/TodoList'
 import TodoForm from './features/TodoForm'
 function App() {
-  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/s${import.meta.env.VITE_TABLE_NAME}`
+  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
   const token = `Bearer ${import.meta.env.VITE_PAT}`
   const [todoList, setTodoList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -46,6 +46,11 @@ function App() {
     fetchTodos();
   }, [])
   async function addTodo(title) {
+    const newTodo = {
+      id: Date.now(),
+      title: title,
+      isCompleted: false
+    }
     const payload = {
       records: [
         {
@@ -64,10 +69,26 @@ function App() {
       },
       body: JSON.stringify(payload),
     };
-    const newTodo = {
-      id: Date.now(),
-      title: title,
-      isCompleted: false
+    try {
+      setIsSaving(true)
+      const resp = await fetch( + "ds", options)
+      if (!resp.ok) {
+        new Error(resp.statusText)
+      }
+      const {records} = await resp.json()
+      const { id, fields } = records[0];
+      const savedTodo = {
+        id,
+        ...fields,
+      };
+      if (!records[0].fields.isCompleted) {
+        savedTodo.isCompleted = false;
+      }
+      setTodoList([...todoList, savedTodo]);
+    } catch (error) {
+
+    } finally {
+      setIsSaving(false)
     }
     setTodoList([...todoList, newTodo])
   }
