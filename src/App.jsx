@@ -92,12 +92,51 @@ function App() {
       setIsSaving(false)
     }
   }
-  function completeTodo(id) {
-    const updatedTodo = todoList.map(ele => {
-      if (ele.id === id) return {...ele, isCompleted: true}
-      return ele
+  async function completeTodo(id) {
+    const completeTodo = todoList.find((todo) => todo.id === id);
+    const updateTodoList = todoList.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, isCompleted: !todo.isCompleted };
+      }
+      return todo;
     });
-    setTodoList(updatedTodo);
+    setTodoList(updateTodoList);
+    setIsSaving(true);
+
+    const payload = {
+      records: [
+        {
+          id: completeTodo.id,
+          fields: {
+            title: completeTodo.title,
+            isCompleted: true,
+          },
+        },
+      ],
+    };
+    const options = {
+      method: 'PATCH',
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+    try {
+      const resp = await fetch(url, options);
+      if (!resp.ok) {
+        throw new Error(resp.statusText);
+      }
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(`${error.message}. Reverting todo completion...`);
+      const revertedTodos = todoList.map((todo) =>
+        todo.id === completeTodo.id ? completeTodo : todo
+      );
+      setTodoList([...revertedTodos]);
+    } finally {
+      setIsSaving(false);
+    }
   }
   async function updateTodo(editedTodo) {
     const originalTodo = todoList.find((todo) => todo.id === editedTodo.id);
