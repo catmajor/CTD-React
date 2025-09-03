@@ -71,7 +71,7 @@ function App() {
     };
     try {
       setIsSaving(true)
-      const resp = await fetch( + "ds", options)
+      const resp = await fetch(url, options)
       if (!resp.ok) {
         new Error(resp.statusText)
       }
@@ -86,11 +86,11 @@ function App() {
       }
       setTodoList([...todoList, savedTodo]);
     } catch (error) {
-
+      setErrorMessage(error.message)
+      console.error(error.message)
     } finally {
       setIsSaving(false)
     }
-    setTodoList([...todoList, newTodo])
   }
   function completeTodo(id) {
     const updatedTodo = todoList.map(ele => {
