@@ -5,6 +5,8 @@ import TodoList from './features/TodoList/TodoList'
 import TodoForm from './features/TodoForm'
 function App() {
   const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   function addTodo(title) {
     const newTodo = {
       id: Date.now(),
