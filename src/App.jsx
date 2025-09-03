@@ -9,6 +9,10 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    const fetchTodos = async () => {};
+    fetchTodos();
+  }, [])
   function addTodo(title) {
     const newTodo = {
       id: Date.now(),
