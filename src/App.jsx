@@ -45,7 +45,25 @@ function App() {
     };
     fetchTodos();
   }, [])
-  function addTodo(title) {
+  async function addTodo(title) {
+    const payload = {
+      records: [
+        {
+          fields: {
+            title: newTodo.title,
+            isCompleted: newTodo.isCompleted,
+          },
+        },
+      ],
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        Authorization: token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
     const newTodo = {
       id: Date.now(),
       title: title,
