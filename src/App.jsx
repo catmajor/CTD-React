@@ -23,6 +23,18 @@ function App() {
         if (!resp.ok) {
           throw new Error(resp.statusText);
         }
+        const data = await resp.json();
+        const fetchedExamples = data.records.map((record) => {
+          const todo = {
+            id: record.id,
+            ...record.fields,
+          };
+          if (!todo.isCompleted) {
+            todo.isCompleted = false;
+          }
+          return todo;
+        });
+        setTodoList([...fetchedExamples]);
       } catch (error) {
         setErrorMessage(error.message);
         console.error('error:', error.message);
