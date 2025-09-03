@@ -10,7 +10,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   useEffect(() => {
-    const fetchTodos = async () => {};
+    const fetchTodos = async () => {
+      setIsLoading(true)
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: token,
+        },
+      }
+    };
     fetchTodos();
   }, [])
   function addTodo(title) {
