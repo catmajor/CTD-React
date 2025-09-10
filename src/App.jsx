@@ -211,7 +211,14 @@ function App() {
       <TodoForm onAddTodo={addTodo} isSaving={isSaving}/>
       <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo} isLoading={isLoading}/>
       <hr/>
-      <TodoViewForm sortDirection={sortDirection} setSortDirection={setSortDirection} sortField={sortField} setSortField={setSortField} />
+      <TodoViewForm 
+        sortDirection={sortDirection} 
+        setSortDirection={setSortDirection} 
+        sortField={sortField} 
+        setSortField={setSortField}
+        queryString={queryString}
+        setQueryString={setQueryString} 
+      />
       { errorMessage ? 
         <>
         <hr/>
