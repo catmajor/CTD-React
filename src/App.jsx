@@ -26,7 +26,10 @@ function App() {
         },
       }
       try {
-        const resp = await fetch(url, options);
+        const resp = await fetch(
+        encodeUrl({ sortField, sortDirection }), 
+        options
+      )
         const data = await resp.json();
         if (!resp.ok) {
           throw new Error(data.error.message);
@@ -77,7 +80,10 @@ function App() {
     };
     try {
       setIsSaving(true)
-      const resp = await fetch(url, options)
+      const resp = await fetch(
+        encodeUrl({ sortField, sortDirection }), 
+        options
+      )
       if (!resp.ok) {
         new Error(resp.statusText)
       }
@@ -129,7 +135,10 @@ function App() {
       body: JSON.stringify(payload),
     };
     try {
-      const resp = await fetch(url, options);
+      const resp = await fetch(
+        encodeUrl({ sortField, sortDirection }), 
+        options
+      )
       if (!resp.ok) {
         throw new Error(resp.statusText);
       }
@@ -171,7 +180,10 @@ function App() {
       body: JSON.stringify(payload),
     };
     try {
-      const resp = await fetch(url, options);
+      const resp = await fetch(
+        encodeUrl({ sortField, sortDirection }), 
+        options
+      )
       if (!resp.ok) {
         throw new Error(resp.statusText);
       }
