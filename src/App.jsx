@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import './App.css'
 import TodoList from './features/TodoList/TodoList'
 import TodoForm from './features/TodoForm'
+import TodoViewForm from './features/TodoViewForm'
 const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
 const encodeUrl = ({ sortField, sortDirection }) => {
   let sortQuery = `sort[0][field]=${sortField}&sort[0][direction]=${sortDirection}`;
@@ -204,6 +205,8 @@ function App() {
       <h1>Todo List</h1>
       <TodoForm onAddTodo={addTodo} isSaving={isSaving}/>
       <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo} isLoading={isLoading}/>
+      <hr/>
+      <TodoViewForm sortDirection={sortDirection} setSortDirection={setSortDirection} sortField={sortField} setSortField={setSortField} />
       { errorMessage ? 
         <>
         <hr/>
