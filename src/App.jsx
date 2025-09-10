@@ -5,10 +5,10 @@ import TodoList from './features/TodoList/TodoList'
 import TodoForm from './features/TodoForm'
 import TodoViewForm from './features/TodoViewForm'
 const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
-const encodeUrl = ({ queryString, sortField, sortDirection }) => {
-  let sortQuery = `sort[0][field]=${sortField}&sort[0][direction]=${sortDirection}}`;
+const encodeUrl = ({ sortField, sortDirection, queryString }) => {
+  let sortQuery = `sort[0][field]=${sortField}&sort[0][direction]=${sortDirection}`;
   let searchQuery = ""
-  if (searchQuery) {
+  if (queryString) {
     searchQuery = `&filterByFormula=SEARCH("${queryString}",+title)`
   }
   return encodeURI(`${url}?${sortQuery}${searchQuery}`);
