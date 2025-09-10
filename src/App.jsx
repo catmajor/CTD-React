@@ -53,7 +53,7 @@ function App() {
       }
     };
     fetchTodos();
-  }, [])
+  }, [sortField, sortDirection])
   async function addTodo(title) {
     const newTodo = {
       id: Date.now(),
