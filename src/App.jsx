@@ -4,6 +4,7 @@ import './App.css'
 import TodoList from './features/TodoList/TodoList'
 import TodoForm from './features/TodoForm'
 import TodoViewForm from './features/TodoViewForm'
+import styles from './App.module.css'
 const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
 function App() {
   const token = `Bearer ${import.meta.env.VITE_PAT}`
@@ -206,7 +207,7 @@ function App() {
     setTodoList(updatedTodo);
   }
   return(
-    <>
+    <div className={styles.appContainer}>
       <h1>Todo List</h1>
       <TodoForm onAddTodo={addTodo} isSaving={isSaving}/>
       <TodoList todoList={todoList} onCompleteTodo={completeTodo} onUpdateTodo={updateTodo} isLoading={isLoading}/>
@@ -221,12 +222,14 @@ function App() {
       />
       { errorMessage ? 
         <>
-        <hr/>
-        <p>{errorMessage}</p>
-        <button onClick={() => {setErrorMessage("")}}>Clear</button>
+          <hr/>
+          <div className={styles.errorBox}>
+            <p>{errorMessage}</p>
+            <button onClick={() => {setErrorMessage("")}}>Clear</button>
+          </div>
         </>
       : <></>}
-    </>
+    </div>
   );
 }
 
