@@ -1,4 +1,5 @@
 import TodoListItem from "./TodoListItem";
+import styles from './TodoList.module.css';
 function TodoList({todoList, onCompleteTodo, onUpdateTodo, isLoading}){
     const filteredTodoList = todoList.filter((ele) => ele.isCompleted === false)
     return (
@@ -8,7 +9,7 @@ function TodoList({todoList, onCompleteTodo, onUpdateTodo, isLoading}){
                     isLoading ? <p>Loading todos...</p> : <p>Add todo above to get started</p>
                 )
             :
-                <ul>
+                <ul className={styles.ulNoPadding}>
                 {filteredTodoList.map(todo => 
                 <TodoListItem key={todo.id} todo={todo} onCompleteTodo = {onCompleteTodo} onUpdateTodo = {onUpdateTodo}/>
                 )}
