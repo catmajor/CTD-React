@@ -1,0 +1,50 @@
+body, #root {
+  background-color: #f5f7fa;
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  color: #2d3748;
+  margin-top: 0;
+}
+
+/* Paragraphs and text */
+p, label, span, input, button {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #333;
+}
+
+/* Buttons */
+button {
+  background-color: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0.2em 0.2em 0.2em 0;
+}
+button:hover, button:focus {
+  background-color: #225ea8;
+}
+
+/* Text inputs */
+input[type="text"], input[type="search"], textarea {
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  padding: 0.4em 0.8em;
+  font-size: 1em;
+  margin: 0.2em 0;
+  outline: none;
+  transition: border 0.2s;
+}
+input[type="text"]:focus, input[type="search"]:focus, textarea:focus {
+  border-color: #3182ce;
+}
+

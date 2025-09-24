@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./TodoListItem.module.css";
 import TextInputWithLabel from "../../shared/TextInputWithLabel";
 function TodoListItem({todo, onCompleteTodo, onUpdateTodo}) {
   const [isEditing, setIsEditing] = useState(false);
@@ -17,7 +18,7 @@ function TodoListItem({todo, onCompleteTodo, onUpdateTodo}) {
     setIsEditing(false)
   }
   return (
-    <li>
+    <li className={styles.listItem}>
       {isEditing ? 
         <>
           <TextInputWithLabel value={workingTitle} onChange={(e) => handleEdit(e)}/>
